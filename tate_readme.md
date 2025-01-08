@@ -36,11 +36,14 @@ yfinance
 matplotlib
 arch
 ```
+
 ## Usage
 
 1. First, prepare the data:
+```
 bash
 python data_preparation.py
+```
 
 This script will:
 - Download historical ETF data
@@ -52,13 +55,13 @@ This script will:
 ```
 bash
 python volatility_forecasting.py
+```
 
 This script will:
 - Build and train the LSTM model
 - Evaluate model performance
 - Generate visualization plots
 - Save the trained model
-```
 
 ## Model Architecture
 
