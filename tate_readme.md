@@ -3,6 +3,7 @@
 This project implements a deep learning approach to forecast the volatility of SPDR Sector ETFs using LSTM (Long Short-Term Memory) neural networks. The model is designed to outperform traditional time series models like GARCH in terms of forecast accuracy.
 
 ## Project Structure
+```
 project_root/
 ├── Data/
 │ ├── train_data.csv
@@ -12,7 +13,7 @@ project_root/
 │ └── volatility_lstm_model.h5
 ├── data_preparation.py
 └── volatility_forecasting.py
-
+```
 ## Features
 
 - Downloads historical data for 11 SPDR Sector ETFs
@@ -26,6 +27,7 @@ project_root/
 - Visualizes model performance and predictions
 
 ## Requirements
+```
 tensorflow
 pandas
 numpy
@@ -33,7 +35,7 @@ scikit-learn
 yfinance
 matplotlib
 arch
-
+```
 ## Usage
 
 1. First, prepare the data:
@@ -47,6 +49,7 @@ This script will:
 - Split the data into training, validation, and test sets
 
 2. Then, train and evaluate the model:
+```
 bash
 python volatility_forecasting.py
 
@@ -55,6 +58,7 @@ This script will:
 - Evaluate model performance
 - Generate visualization plots
 - Save the trained model
+```
 
 ## Model Architecture
 
