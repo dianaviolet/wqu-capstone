@@ -1,0 +1,86 @@
+# Basic configuration
+tickers: ["SPY", "AOM", "VT", "AGG", "BIL", "^VIX", "VDE", "DBC", "AQMIX", "IWN"]
+start_date: "2021-08-30"
+end_date: "2024-12-31"
+train_size: 0.7
+valid_size: 0.1
+seed: 42
+lags: 5
+rebalance_frequency: "ME"  # Month end
+transaction_cost: 0.001
+use_garch_in_lstm: true
+min_required_samples: 5
+
+# LSTM model settings
+lstm:
+  window_size: 30
+  lstm_units: 64
+  lstm_layers: 2
+  dense_layers: 1
+  dropout_rate: 0.2
+  learning_rate: 0.001
+  batch_size: 32
+  epochs: 100
+  early_stopping_patience: 10
+  reduce_lr_patience: 5
+
+# LSTM volatility model settings
+lstm_vol:
+  sequence_length: 30
+  lstm_units: 64
+  dropout_rate: 0.2
+  learning_rate: 0.001
+  batch_size: 32
+  epochs: 100
+  
+# GARCH model settings
+garch:
+  p: 1
+  q: 1
+  mean: "Zero"
+  vol: "GARCH"
+  dist: "normal"
+  fit_retries: 3
+
+# Portfolio optimization settings
+portfolio:
+  risk_free_rate: 0.01
+  objective: "sharpe"
+  weight_bounds: [0, 1]
+  cov_regularization: 1e-6
+  
+# Strategy-specific settings
+MVO_Historical:
+  risk_free_rate: 0.01
+  objective: "sharpe"
+  weight_bounds: [0, 1]
+  
+MVO_Hist_Ret_Fore_Vol:
+  risk_free_rate: 0.01
+  objective: "min_vol"
+  weight_bounds: [0, 1]
+  cov_regularization: 1e-5
+  
+MVO_Fore_Ret_Hist_Vol:
+  risk_free_rate: 0.01
+  objective: "sharpe"
+  weight_bounds: [0, 1]
+  
+MVO_Fore_Ret_Fore_Vol:
+  risk_free_rate: 0.01
+  objective: "sharpe"
+  weight_bounds: [0, 0.5]
+  cov_regularization: 1e-5
+
+# PPO model settings
+use_ppo: true
+ppo:
+  n_steps: 512
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
+  learning_rate: 0.0003
+  total_timesteps: 1000000 
+  observation_window: 30
+  features_per_asset: 6
+  reward_scaling: 1.0
